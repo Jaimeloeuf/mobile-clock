@@ -1,5 +1,6 @@
 // Load bulma styles in the main entry point before all else
 import "bulma/css/bulma.min.css";
+import "bulma-switch/dist/css/bulma-switch.min.css";
 
 // Import API library first to set default base URL before it is used anywhere else
 import { oof } from "simpler-fetch";

@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "bulma": "^0.9.4",
+    "bulma-switch": "^2.0.4",
     "pinia": "^2.0.18",
     "pinia-plugin-persistedstate": "^2.1.1",
     "simpler-fetch": "^7.0.2",

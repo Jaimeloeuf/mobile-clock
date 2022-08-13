@@ -2,18 +2,18 @@ import { defineStore } from "pinia";
 
 // Need to define type of State object externally, to define optional properties
 interface State {
-  name?: string;
-  random: number;
+  settings: {
+    highFrequencyUpdate: boolean;
+  };
 }
 
-// useStore could be anything like useUser, useCart
-// the first argument is a unique id of the store across your application
 export const useStore = defineStore("main", {
   // arrow function recommended for full type inference
   state: (): State => ({
-    // all these properties will have their type inferred automatically
-    name: "User",
-    random: 0,
+    settings: {
+      // Defaults to false to update less often as it is not needed for most cases
+      highFrequencyUpdate: false,
+    },
   }),
 
   // https://pinia.vuejs.org/core-concepts/actions.html

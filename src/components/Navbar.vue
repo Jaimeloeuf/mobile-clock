@@ -1,3 +1,13 @@
+<script setup lang="ts">
+import { ref } from "vue";
+
+const showMobileMenu = ref<boolean>(false);
+const menuItems = [
+  { name: "Clock", link: { name: "home" } },
+  { name: "Settings", link: { name: "settings" } },
+];
+</script>
+
 <template>
   <!-- See class applied to the html tag in index.html for sticky navbar -->
   <nav id="nav" class="navbar is-fixed-top is-white" role="navigation">
@@ -47,7 +57,7 @@
 
         <a
           class="navbar-item"
-          href="https://github.com/Enkel-Digital/vue3-bulma-template"
+          href="https://github.com/Jaimeloeuf/mobile-clock"
           target="_blank"
         >
           <span @click="showMobileMenu = false">Github</span>
@@ -58,22 +68,6 @@
 
   <br />
 </template>
-
-<script lang="ts">
-export default {
-  name: "Navbar",
-  data() {
-    return {
-      showMobileMenu: false,
-
-      // @todo Add menu items as needed
-      menuItems: [
-        // { name: "About", link: { name: "about" } },
-      ],
-    };
-  },
-};
-</script>
 
 <style scoped>
 /* Gives the nav bar a white fill background and a super thin and light bottom underline to give visual seperation from the content */
