@@ -6,6 +6,7 @@ import { useStore } from "../store/index";
 const mainStore = useStore();
 
 const time = ref<Date>(new Date());
+const locale = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
 // Continuously update the time every interval
 // `setInterval` is not guaranteed to run every X milliseconds set, it is a best effort,
@@ -34,7 +35,49 @@ onUnmounted(() => clearInterval(interval));
   <section class="section mx-3">
     <div class="columns is-centered">
       <div class="column">
-        <h1 class="title has-text-weight-normal">{{ time }}</h1>
+        <!-- Always show locale as long as not the time only version -->
+        <h1
+          v-if="mainStore.settings.displayFormat !== 'short'"
+          class="title has-text-weight-light"
+          style="opacity: 0.9"
+        >
+          {{ locale }}
+        </h1>
+
+        <h1
+          v-if="mainStore.settings.displayFormat === 'full'"
+          class="title has-text-weight-normal"
+        >
+          {{
+            new Intl.DateTimeFormat("default", {
+              weekday: "long",
+              year: "numeric",
+              month: "long",
+              day: "2-digit",
+            }).format(time)
+          }}
+        </h1>
+
+        <h1
+          v-else-if="mainStore.settings.displayFormat === 'medium'"
+          class="title has-text-weight-normal"
+        >
+          {{
+            new Intl.DateTimeFormat("default", {
+              weekday: "long",
+              year: "numeric",
+              month: "numeric",
+              day: "numeric",
+            }).format(time)
+          }}
+        </h1>
+
+        <!-- The time is always shown for all display formats -->
+        <div class="box has-text-centered">
+          <h1 class="title has-text-weight-normal">
+            {{ time.toLocaleTimeString() }}
+          </h1>
+        </div>
       </div>
     </div>
   </section>

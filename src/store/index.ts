@@ -4,6 +4,7 @@ import { defineStore } from "pinia";
 interface State {
   settings: {
     highFrequencyUpdate: boolean;
+    displayFormat: "full" | "medium" | "short";
   };
 }
 
@@ -13,12 +14,9 @@ export const useStore = defineStore("main", {
     settings: {
       // Defaults to false to update less often as it is not needed for most cases
       highFrequencyUpdate: false,
+      displayFormat: "full",
     },
   }),
-
-  // https://pinia.vuejs.org/core-concepts/actions.html
-  actions: {
-  },
 
   // https://www.npmjs.com/package/pinia-plugin-persistedstate
   // Persists this store's state in localStorage to reuse across sessions

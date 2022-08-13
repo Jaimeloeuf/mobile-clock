@@ -43,6 +43,39 @@ const mainStore = useStore();
             </div>
           </div>
         </div>
+
+        <div class="column is-full">
+          <div class="box">
+            <h3 class="subtitle">Display Format</h3>
+
+            <details class="content mt-4">
+              <summary style="cursor: pointer">More info</summary>
+              <br />
+
+              Use this to select how you want the time to be displayed.
+            </details>
+
+            <div class="select is-success is-fullwidth mb-5">
+              <select
+                v-model="mainStore.settings.displayFormat"
+                name="displayFormat"
+              >
+                <option value="full">Full DateTime</option>
+                <option value="medium">Short Date and Time</option>
+                <option value="short">Time only</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="column is-full">
+          <router-link
+            :to="{ name: 'home' }"
+            class="button is-light is-success is-fullwidth"
+          >
+            Home
+          </router-link>
+        </div>
       </div>
     </div>
   </div>
