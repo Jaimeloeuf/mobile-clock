@@ -33,10 +33,10 @@ const mainStore = useStore();
             <div class="field">
               <input
                 id="switchColorSuccess"
+                v-model="mainStore.settings.highFrequencyUpdate"
                 type="checkbox"
                 name="switchColorSuccess"
                 class="switch is-rounded is-success"
-                :checked="mainStore.settings.highFrequencyUpdate"
               />
 
               <label for="switchColorSuccess">High Frequency</label>
