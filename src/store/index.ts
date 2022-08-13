@@ -18,9 +18,6 @@ export const useStore = defineStore("main", {
 
   // https://pinia.vuejs.org/core-concepts/actions.html
   actions: {
-    updateRandom() {
-      this.random = Math.trunc(Math.random() * 1000);
-    },
   },
 
   // https://www.npmjs.com/package/pinia-plugin-persistedstate
