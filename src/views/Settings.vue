@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import version from "../components/Version.vue";
 import { useStore } from "../store/index";
 
 // Cannot destructure out values as it will lose its reactivity
@@ -77,6 +78,8 @@ const mainStore = useStore();
           </router-link>
         </div>
       </div>
+
+      <version />
     </div>
   </div>
 </template>
