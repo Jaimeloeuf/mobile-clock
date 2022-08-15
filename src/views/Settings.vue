@@ -43,9 +43,16 @@ const mainStore = useStore();
                 </li>
 
                 <li>
-                  <b>Note</b> that this only works on devices that support the
-                  Wake Lock API like Android Chrome and currently does not
-                  include Safari. You can track the support here:
+                  <b>Note</b> that this is only guaranteed to work on devices
+                  that support the native Wake Lock API like Android Chrome and
+                  currently does not include Safari. However for most iOS safari
+                  users this should still work thanks to this
+                  <a href="https://github.com/Doxee/NoSleep.js">library</a>
+                </li>
+
+                <li>
+                  You can track the support for WakeLock API and the library
+                  here:
                   <ul style="word-wrap: break-word">
                     <li>
                       <a href="https://caniuse.com/wake-lock" target="_blank">
