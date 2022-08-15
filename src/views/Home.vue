@@ -34,20 +34,12 @@ onUnmounted(() => clearInterval(interval));
   -->
   <section class="section mx-3">
     <div class="columns is-centered">
-      <div class="column">
-        <!-- Always show locale as long as not the time only version -->
-        <h1
-          v-if="mainStore.settings.displayFormat !== 'short'"
-          class="title has-text-weight-light"
-          style="opacity: 0.9"
-        >
+      <div v-if="mainStore.settings.displayFormat === 'full'" class="column">
+        <h1 class="title has-text-weight-light" style="opacity: 0.9">
           {{ locale }}
         </h1>
 
-        <h1
-          v-if="mainStore.settings.displayFormat === 'full'"
-          class="title has-text-weight-normal"
-        >
+        <h1 class="title has-text-weight-normal">
           {{
             new Intl.DateTimeFormat("default", {
               weekday: "long",
@@ -58,10 +50,22 @@ onUnmounted(() => clearInterval(interval));
           }}
         </h1>
 
-        <h1
-          v-else-if="mainStore.settings.displayFormat === 'medium'"
-          class="title has-text-weight-normal"
-        >
+        <div class="box has-text-centered">
+          <h1 class="title has-text-weight-normal">
+            {{ time.toLocaleTimeString() }}
+          </h1>
+        </div>
+      </div>
+
+      <div
+        v-else-if="mainStore.settings.displayFormat === 'medium'"
+        class="column"
+      >
+        <h1 class="title has-text-weight-light" style="opacity: 0.9">
+          {{ locale }}
+        </h1>
+
+        <h1 class="title has-text-weight-normal">
           {{
             new Intl.DateTimeFormat("default", {
               weekday: "long",
@@ -72,7 +76,15 @@ onUnmounted(() => clearInterval(interval));
           }}
         </h1>
 
-        <!-- The time is always shown for all display formats -->
+        <div class="box has-text-centered">
+          <h1 class="title has-text-weight-normal">
+            {{ time.toLocaleTimeString() }}
+          </h1>
+        </div>
+      </div>
+
+      <!-- If neither full/medium, then displayFormat must be 'short' -->
+      <div v-else class="column">
         <div class="box has-text-centered">
           <h1 class="title has-text-weight-normal">
             {{ time.toLocaleTimeString() }}
