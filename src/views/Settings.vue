@@ -24,6 +24,53 @@ const mainStore = useStore();
 
         <div class="column is-full">
           <div class="box">
+            <h3 class="subtitle">Stay Awake?</h3>
+
+            <details class="content mt-4">
+              <summary style="cursor: pointer">More info</summary>
+
+              <ul>
+                <li>
+                  Enable this if you would like your device to stay awake while
+                  the app is open, so that your screen will not be dimmed or
+                  locked after a period of inactivity.
+                </li>
+
+                <li>
+                  This is primarily so that you can use this app as a display
+                  clock without having to change your device settings to make
+                  your device stay awake by turning off the auto-lock feature.
+                </li>
+
+                <li>
+                  <b>Note</b> that this only works on devices that support the
+                  Wake Lock API like Android Chrome and currently does not
+                  include Safari.
+                </li>
+              </ul>
+            </details>
+
+            <div class="field">
+              <!--
+                The value of this checkbox mirrors the flag on the `noSleep` object,
+                while the function to actually toggle the state/flag is defined in a store action.
+              -->
+              <input
+                id="switchColorSuccess"
+                :checked="mainStore._noSleep.isEnabled"
+                @change="mainStore.toggleStayAwake"
+                type="checkbox"
+                name="switchColorSuccess"
+                class="switch is-rounded is-success"
+              />
+
+              <label for="switchColorSuccess">Stay Awake</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="column is-full">
+          <div class="box">
             <h3 class="subtitle">High Frequency Update?</h3>
 
             <details class="content mt-4">
