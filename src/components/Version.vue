@@ -1,10 +1,8 @@
 <script setup lang="ts">
 /* Build time variables injected in by vite, configured in vite.config.js */
 
-// buildTime is ISO string format, so convert to Date and remove singapore string part after converting to user's locale (assumed to be SG)
-const buildTime = new Date(__vite_inject.buildTime)
-  .toString()
-  .replace(" (Singapore Standard Time)", "");
+// buildTime is ISO string format, so convert to Date
+const buildTime = new Date(__vite_inject.buildTime).toString();
 
 // Calculate the version using git branch and commit hash
 const version =
@@ -15,10 +13,7 @@ const version =
 
 <template>
   <!-- Fixed styles to ensure that the build time string it not too long and extend pass the mobile components -->
-  <div
-    class="level"
-    style="font-size: 0.7em; position: fixed; bottom: 1em; max-width: 30em"
-  >
+  <div class="level" style="font-size: 0.75em">
     Version: {{ version }}
     <br />
     Build Time: {{ buildTime }}

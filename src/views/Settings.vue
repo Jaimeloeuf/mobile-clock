@@ -19,6 +19,10 @@ const mainStore = useStore();
     <div class="section py-0">
       <div class="columns is-multiline">
         <div class="column is-full">
+          <div class="box"><version /></div>
+        </div>
+
+        <div class="column is-full">
           <div class="box">
             <h3 class="subtitle">High Frequency Update?</h3>
 
@@ -78,8 +82,6 @@ const mainStore = useStore();
           </router-link>
         </div>
       </div>
-
-      <version />
     </div>
   </div>
 </template>
