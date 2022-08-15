@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar.vue";
 <template>
   <Navbar />
 
-  <!-- Center router view element horizontally -->
+  <!-- Center router view element horizontally on desktop/wide views -->
   <!--
     By passing this attribute to child components, the child components
     cannot be a fragment (return multiple root nodes) as vue js will
