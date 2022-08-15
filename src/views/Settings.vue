@@ -45,7 +45,30 @@ const mainStore = useStore();
                 <li>
                   <b>Note</b> that this only works on devices that support the
                   Wake Lock API like Android Chrome and currently does not
-                  include Safari.
+                  include Safari. You can track the support here:
+                  <ul style="word-wrap: break-word">
+                    <li>
+                      <a href="https://caniuse.com/wake-lock" target="_blank">
+                        https://caniuse.com/wake-lock
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://github.com/richtr/NoSleep.js/issues/135"
+                        target="_blank"
+                      >
+                        https://github.com/richtr/NoSleep.js/issues/135
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://stackoverflow.com/questions/9709891/prevent-ios-mobile-safari-from-going-idle-auto-locking-sleeping"
+                        target="_blank"
+                      >
+                        https://stackoverflow.com/questions/9709891/prevent-ios-mobile-safari-from-going-idle-auto-locking-sleeping
+                      </a>
+                    </li>
+                  </ul>
                 </li>
               </ul>
             </details>
