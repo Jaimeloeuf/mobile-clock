@@ -1,11 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-
 const showMobileMenu = ref<boolean>(false);
-const menuItems = [
-  { name: "Clock", link: { name: "home" } },
-  { name: "Settings", link: { name: "settings" } },
-];
 </script>
 
 <template>
@@ -45,14 +40,13 @@ const menuItems = [
       class="navbar-menu has-text-right"
       :class="{ 'is-active': showMobileMenu }"
     >
-      <div class="navbar-end">
-        <router-link
-          v-for="(menuItem, i) in menuItems"
-          :key="i"
-          :to="menuItem.link"
-          class="navbar-item"
-        >
-          <span @click="showMobileMenu = false">{{ menuItem.name }}</span>
+      <div @click="showMobileMenu = false" class="navbar-end">
+        <router-link :to="{ name: 'home' }" class="navbar-item">
+          Clock
+        </router-link>
+
+        <router-link :to="{ name: 'settings' }" class="navbar-item">
+          Settings
         </router-link>
 
         <a
@@ -60,7 +54,7 @@ const menuItems = [
           href="https://github.com/Jaimeloeuf/mobile-clock"
           target="_blank"
         >
-          <span @click="showMobileMenu = false">Github</span>
+          Github
         </a>
       </div>
     </div>
