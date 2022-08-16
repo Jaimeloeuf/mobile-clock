@@ -33,7 +33,7 @@ onUnmounted(() => clearInterval(interval));
     onto, therefore, by grouping all under a div tag, the class applied
     on router-view element in App.vue will be inherited here on this div.
   -->
-  <section class="section mx-3">
+  <section class="section mx-3 center">
     <div class="columns is-centered">
       <div v-if="mainStore.settings.displayFormat === 'full'" class="column">
         <h1 class="title has-text-weight-light" style="opacity: 0.9">
@@ -86,7 +86,7 @@ onUnmounted(() => clearInterval(interval));
 
       <!-- If neither full/medium, then displayFormat must be 'short' -->
       <div v-else class="column">
-        <div class="box has-text-centered">
+        <div class="has-text-centered">
           <h1 class="title has-text-weight-normal">
             {{ time.toLocaleTimeString() }}
           </h1>
@@ -97,3 +97,19 @@ onUnmounted(() => clearInterval(interval));
     <StayAwakeFAB />
   </section>
 </template>
+
+<style scoped>
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+
+  /*
+    Set height to 80vh instead of 100vh to take into account the heigh of the navbar.
+    If this is 100vh, the page content exceeds the viewport Y axis, which will make the page scrollable.
+  */
+  height: 80vh;
+}
+</style>

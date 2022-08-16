@@ -157,7 +157,7 @@ const mainStore = useStore();
                 v-model="mainStore.settings.displayFormat"
                 name="displayFormat"
               >
-                <option value="full">Full DateTime</option>
+                <option value="full">Full Date and Time</option>
                 <option value="medium">Short Date and Time</option>
                 <option value="short">Time only</option>
               </select>
