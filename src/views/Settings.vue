@@ -37,9 +37,24 @@ const mainStore = useStore();
                 </li>
 
                 <li>
-                  This is primarily so that you can use this app as a display
-                  clock without having to change your device settings to make
-                  your device stay awake by turning off the auto-lock feature.
+                  This let's you use this app as a display clock without having
+                  to change your device settings to make your device stay awake
+                  by turning off the auto-lock feature.
+                </li>
+
+                <li>
+                  You can also enable this using the FAB (Floating Action
+                  Button) in the main clock screen by clicking it to toggle.
+                </li>
+
+                <li>
+                  If you want to use this, this needs to be re-enabled every
+                  single time you open the app as this setting cannot be
+                  persisted across sessions. This is because to start a
+                  stay-awake session, the browser requires a user interaction
+                  like a button click before it is allowed to begin, which is
+                  why there is a FAB in the main clock screen for convenience
+                  sake.
                 </li>
 
                 <li>
