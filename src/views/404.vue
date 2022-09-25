@@ -1,25 +1,9 @@
 <script setup lang="ts">
 const loc = window.location.toString();
-
-// An example for a issue reporting function
-async function report() {
-  alert("Error reported!");
-
-  // Sample error reporting logic
-  // const { oof } = await import("simpler-fetch");
-
-  // const res = await oof
-  //   .POST("/error")
-  //   .data({ error: "404 route", data: loc })
-  //   .runJSON()
-  //   .catch((e) => alert(`Error: ${e.message}`));
-
-  // if (res.ok) alert(`Error reported, case number: ${res.id}`);
-}
 </script>
 
 <template>
-  <div class="columns is-multiline mx-6 my-6">
+  <div class="columns is-multiline mx-2 my-4">
     <div class="column is-full">
       <p class="title is-3">Page Not Found</p>
       <br />
@@ -34,12 +18,12 @@ async function report() {
         </div>
 
         <div class="column is-narrow">
-          <button
+          <a
             class="button is-light is-warning is-fullwidth"
-            @click="report"
+            href="https://github.com/Jaimeloeuf/mobile-clock/issues/new"
           >
             report issue
-          </button>
+          </a>
         </div>
       </div>
     </div>
