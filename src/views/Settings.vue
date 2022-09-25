@@ -1,9 +1,15 @@
 <script setup lang="ts">
-import version from "../components/Version.vue";
 import { useStore } from "../store/index";
-
-// Cannot destructure out values as it will lose its reactivity
 const mainStore = useStore();
+
+/* Using build time variables injected in by vite, configured in vite.config.js */
+
+// buildTime is ISO string format, so convert to Date
+const buildTime = new Date(__vite_inject.buildTime).toString();
+
+// Create version string using git branch and commit hash
+const version =
+  __vite_inject.gitBranch + " " + __vite_inject.commitHash.slice(0, 6);
 </script>
 
 <template>
@@ -19,7 +25,16 @@ const mainStore = useStore();
     <div class="section py-0">
       <div class="columns is-multiline">
         <div class="column is-full">
-          <div class="box"><version /></div>
+          <div class="box">
+            <b class="has-text-warning-dark">Version</b>
+
+            <!-- Fixed styles to ensure that the build time string it not too long and extend pass the mobile components -->
+            <div class="level mt-1" style="font-size: 0.75em">
+              Version: {{ version }}
+              <br />
+              Build Time: {{ buildTime }}
+            </div>
+          </div>
         </div>
 
         <div class="column is-full">
