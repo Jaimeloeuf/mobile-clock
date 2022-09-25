@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "bulma": "^0.9.4",
-    "bulma-switch": "^2.0.4",
     "nosleep.js": "github:Doxee/NoSleep.js",
     "pinia": "^2.0.18",
     "pinia-plugin-persistedstate": "^2.1.1",

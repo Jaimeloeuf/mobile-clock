@@ -39,9 +39,30 @@ const version =
 
         <div class="column is-full">
           <div class="box">
-            <h3 class="subtitle">Stay Awake?</h3>
+            <div class="columns is-vcentered is-mobile mb-0">
+              <div class="column">
+                <b class="has-text-warning-dark">Stay Awake</b>
+              </div>
 
-            <details class="content mt-4">
+              <div class="column is-narrow">
+                <label class="form-switch">
+                  <!--
+                    The value of this checkbox mirrors the flag on the `noSleep` object,
+                    while the function to actually toggle the state/flag is defined in a store action.
+                  -->
+                  <input
+                    id="stayAwake"
+                    :checked="mainStore._noSleep.isEnabled"
+                    @change="mainStore.toggleStayAwake"
+                    type="checkbox"
+                    class="switch is-rtl is-rounded is-success"
+                  />
+                  <i></i>
+                </label>
+              </div>
+            </div>
+
+            <details class="content">
               <summary style="cursor: pointer">More info</summary>
 
               <ul>
@@ -109,30 +130,29 @@ const version =
                 </li>
               </ul>
             </details>
-
-            <div class="field">
-              <!--
-                The value of this checkbox mirrors the flag on the `noSleep` object,
-                while the function to actually toggle the state/flag is defined in a store action.
-              -->
-              <input
-                id="stayAwake"
-                :checked="mainStore._noSleep.isEnabled"
-                @change="mainStore.toggleStayAwake"
-                type="checkbox"
-                class="switch is-rounded is-success"
-              />
-
-              <label for="stayAwake">Stay Awake</label>
-            </div>
           </div>
         </div>
 
         <div class="column is-full">
           <div class="box">
-            <h3 class="subtitle">High Frequency Update?</h3>
+            <div class="columns is-vcentered is-mobile mb-0">
+              <div class="column">
+                <b class="has-text-warning-dark">High Frequency</b>
+              </div>
 
-            <details class="content mt-4">
+              <div class="column is-narrow">
+                <label class="form-switch">
+                  <input
+                    id="highFrequency"
+                    v-model="mainStore.settings.highFrequencyUpdate"
+                    type="checkbox"
+                  />
+                  <i></i>
+                </label>
+              </div>
+            </div>
+
+            <details class="content">
               <summary style="cursor: pointer">More info</summary>
               <br />
 
@@ -140,32 +160,12 @@ const version =
               accurate, within a 100ms accuracy range. This will cause the UI to
               update more often, so only select this if absolutely necessary.
             </details>
-
-            <div class="field">
-              <input
-                id="highFrequency"
-                v-model="mainStore.settings.highFrequencyUpdate"
-                type="checkbox"
-                class="switch is-rounded is-success"
-              />
-
-              <label for="highFrequency">High Frequency</label>
-            </div>
           </div>
         </div>
 
         <div class="column is-full">
           <div class="box">
-            <h3 class="subtitle">Display Format</h3>
-
-            <details class="content mt-4">
-              <summary style="cursor: pointer">More info</summary>
-              <br />
-
-              Use this to select how you want the time to be displayed.
-            </details>
-
-            <div class="select is-success is-fullwidth mb-5">
+            <div class="select is-success is-fullwidth mb-4">
               <select
                 v-model="mainStore.settings.displayFormat"
                 name="displayFormat"
@@ -175,6 +175,13 @@ const version =
                 <option value="short">Time only</option>
               </select>
             </div>
+
+            <details class="content">
+              <summary style="cursor: pointer">More info</summary>
+              <br />
+
+              Use this to select how you want the time to be displayed.
+            </details>
           </div>
         </div>
 
@@ -190,3 +197,71 @@ const version =
     </div>
   </div>
 </template>
+
+<style scoped>
+/*
+  Reference & Credits: https://www.cssscript.com/realistic-ios-switch-pure-css/
+
+  This is the CSS copied and tweaked using the reference above to create switches
+  that look and feel like iOS native switches.
+*/
+
+.form-switch {
+  display: inline-block;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.form-switch i {
+  position: relative;
+  display: inline-block;
+  margin-right: 0.5rem;
+  width: 46px;
+  height: 26px;
+  background-color: #e6e6e6;
+  border-radius: 23px;
+  vertical-align: text-bottom;
+  transition: all 0.12s linear;
+}
+.form-switch i::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 42px;
+  height: 22px;
+  background-color: #d6d6d6;
+  border-radius: 11px;
+  transform: translate3d(2px, 2px, 0) scale3d(1, 1, 1);
+  transition: all 0.12s linear;
+}
+.form-switch i::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  background-color: #fff;
+  border-radius: 11px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.24);
+  transform: translate3d(2px, 2px, 0);
+  transition: all 0.12s ease-in-out;
+}
+.form-switch:active i::after {
+  width: 28px;
+  transform: translate3d(2px, 2px, 0);
+}
+.form-switch:active input:checked + i::after {
+  transform: translate3d(16px, 2px, 0);
+}
+.form-switch input {
+  display: none;
+}
+.form-switch input:checked + i {
+  background-color: #4fb360;
+}
+.form-switch input:checked + i::before {
+  transform: translate3d(18px, 2px, 0) scale3d(0, 0, 0);
+}
+.form-switch input:checked + i::after {
+  transform: translate3d(22px, 2px, 0);
+}
+</style>
