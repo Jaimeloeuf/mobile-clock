@@ -101,15 +101,14 @@ const mainStore = useStore();
                 while the function to actually toggle the state/flag is defined in a store action.
               -->
               <input
-                id="switchColorSuccess"
+                id="stayAwake"
                 :checked="mainStore._noSleep.isEnabled"
                 @change="mainStore.toggleStayAwake"
                 type="checkbox"
-                name="switchColorSuccess"
                 class="switch is-rounded is-success"
               />
 
-              <label for="switchColorSuccess">Stay Awake</label>
+              <label for="stayAwake">Stay Awake</label>
             </div>
           </div>
         </div>
@@ -129,14 +128,13 @@ const mainStore = useStore();
 
             <div class="field">
               <input
-                id="switchColorSuccess"
+                id="highFrequency"
                 v-model="mainStore.settings.highFrequencyUpdate"
                 type="checkbox"
-                name="switchColorSuccess"
                 class="switch is-rounded is-success"
               />
 
-              <label for="switchColorSuccess">High Frequency</label>
+              <label for="highFrequency">High Frequency</label>
             </div>
           </div>
         </div>
