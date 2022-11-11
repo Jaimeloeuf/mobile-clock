@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onUnmounted } from "vue";
-import { useStore } from "../store/index";
+import { useStore } from "../store";
 import StayAwakeFAB from "../components/StayAwakeFAB.vue";
 
 // Cannot destructure out values as it will lose its reactivity

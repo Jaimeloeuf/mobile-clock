@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import Home from "../views/Home.vue";
-import Settings from "../views/Settings.vue";
+import Home from "./views/Home.vue";
+import Settings from "./views/Settings.vue";
 
 export default createRouter({
   history: createWebHashHistory(),
@@ -33,7 +33,7 @@ export default createRouter({
     {
       path: "/:pathMatch(.*)*",
       name: "404",
-      component: () => import("../views/404.vue"),
+      component: () => import("./views/404.vue"),
     },
   ],
 });

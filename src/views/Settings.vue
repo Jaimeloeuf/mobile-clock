@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import { oof } from "simpler-fetch";
 
-import { useStore } from "../store/index";
+import { useStore } from "../store";
 
 const mainStore = useStore();
 

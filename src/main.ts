@@ -4,7 +4,7 @@ import "bulma/css/bulma.min.css";
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
-import router from "./router/index";
+import router from "./router";
 import App from "./App.vue";
 
 // Create new vue app
