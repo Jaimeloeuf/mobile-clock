@@ -1,5 +1,9 @@
 <script setup lang="ts">
+import { ref } from "vue";
+import { oof } from "simpler-fetch";
+
 import { useStore } from "../store/index";
+
 const mainStore = useStore();
 
 /* Using build time variables injected in by vite, configured in vite.config.js */
@@ -10,6 +14,35 @@ const buildTime = new Date(__vite_inject.buildTime).toString();
 // Create version string using git branch and commit hash
 const version =
   __vite_inject.gitBranch + " " + __vite_inject.commitHash.slice(0, 6);
+
+const checkingComplete = ref<boolean>(false);
+const deviceTime = ref<Date | null>(null);
+const serverTime = ref<Date | null>(null);
+
+/**
+ * Function to check against network clock to show users both time,
+ * so that users can see if their clock is out of sync.
+ */
+async function checkNetworkClock() {
+  checkingComplete.value = false;
+
+  const { res, err } = await oof
+    .GET("https://worldtimeapi.org/api/ip")
+    .once()
+    .runJSON();
+
+  if (err) {
+    console.error(err);
+    return alert("Failed to get network time!");
+  }
+
+  // Set the time after ensuring that there is no error.
+  // Set device time first so the difference between them is as little as possible
+  deviceTime.value = new Date();
+  serverTime.value = new Date(res.unixtime * 1000);
+
+  checkingComplete.value = true;
+}
 </script>
 
 <template>
@@ -182,6 +215,38 @@ const version =
 
               Use this to select how you want the time to be displayed.
             </details>
+          </div>
+        </div>
+
+        <div class="column is-full">
+          <div class="box">
+            <b class="has-text-warning-dark">
+              Check time against network clock
+            </b>
+            <br />
+
+            <p style="font-size: 0.8rem">
+              Use this to check if your device time is accurate
+            </p>
+
+            <button
+              class="button is-light is-fullwidth my-2"
+              @click="checkNetworkClock"
+            >
+              check
+            </button>
+
+            <div v-if="checkingComplete">
+              Device Time
+              <p class="has-text-grey mb-2" style="font-size: 0.9rem">
+                {{ deviceTime }}
+              </p>
+
+              Server Time
+              <p class="has-text-grey" style="font-size: 0.9rem">
+                {{ serverTime }}
+              </p>
+            </div>
           </div>
         </div>
 
